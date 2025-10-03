@@ -83,7 +83,7 @@ const ProjectCards = () => {
   return (
     <div className="container mx-auto px-4 pb-16 relative z-20">
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
@@ -106,9 +106,9 @@ const ProjectCards = () => {
    */
   const ProjectCard = ({ project }) => {
   return (
-    <Card className="bg-gradient-to-br from-black/40 to-black/60 backdrop-blur-xl border border-white/30 overflow-hidden hover:border-[#d237b1]/50 transition-all duration-500 group hover:scale-[1.03] hover:shadow-2xl hover:shadow-[#7200ff]/25 h-full flex flex-col">
+    <Card className="bg-gradient-to-br from-black/40 to-black/60 backdrop-blur-xl border border-white/30 overflow-hidden hover:border-[#d237b1]/50 transition-all duration-500 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#7200ff]/25 h-full flex flex-col max-w-sm mx-auto w-full">
       {/* Project Image with Modern Overlay */}
-      <div className="relative overflow-hidden h-64">
+      <div className="relative overflow-hidden h-52">
         <img
           src={project.projectImg}
           alt={project.projectName}
@@ -120,11 +120,11 @@ const ProjectCards = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         
         {/* Floating Action Buttons */}
-        <div className="absolute top-4 right-4 flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+        <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
           <Button
             size="icon"
             asChild
-            className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-full shadow-xl hover:scale-125 transition-all duration-300 backdrop-blur-sm"
+            className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-full shadow-lg hover:scale-110 transition-all duration-300 backdrop-blur-sm w-8 h-8"
           >
             <a
               href={project.liveLink}
@@ -167,19 +167,19 @@ const ProjectCards = () => {
         </div>
 
         {/* Project Title Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#d237b1] transition-colors duration-300 leading-tight">
+        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d237b1] transition-colors duration-300 leading-tight">
             {project.projectName}
           </h3>
-          <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 opacity-90">
+          <p className="text-gray-300 text-xs leading-relaxed line-clamp-2 opacity-90">
             {project.description || "An innovative web development project showcasing modern technologies and best practices."}
           </p>
         </div>
       </div>
 
-      <CardContent className="p-6 flex-1 flex flex-col bg-black/20 backdrop-blur-sm">
+      <CardContent className="p-4 flex-1 flex flex-col bg-black/20 backdrop-blur-sm">
         {/* Technology Tags */}
-        <div className="flex flex-wrap gap-2 mb-6 flex-1">
+        <div className="flex flex-wrap gap-1.5 mb-4 flex-1">
           {project.tags.slice(0, 4).map((tag, index) => {
             const techInfo = getTechIcon(tag);
             const IconComponent = techInfo.icon;
@@ -191,8 +191,8 @@ const ProjectCards = () => {
               <span
                 key={index}
                 className={`
-                  inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg
-                  border backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-lg
+                  inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-md
+                  border backdrop-blur-sm transition-all duration-300 hover:scale-105
                   ${isDarkTech 
                     ? 'bg-white/90 border-gray-300 text-gray-800' 
                     : 'bg-black/50 border-white/20'
@@ -202,7 +202,7 @@ const ProjectCards = () => {
                   color: isDarkTech ? '#374151' : techInfo.color 
                 }}
               >
-                <IconComponent size={14} />
+                <IconComponent size={12} />
                 {tag}
               </span>
             );
@@ -215,18 +215,18 @@ const ProjectCards = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-4 mt-auto">
+        <div className="grid grid-cols-2 gap-3 mt-auto">
           <Button
             asChild
-            className="bg-gradient-to-r from-[#fb3c5f] to-[#d237b1] hover:from-[#d237b1] hover:to-[#7200ff] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 py-3"
+            className="bg-gradient-to-r from-[#fb3c5f] to-[#d237b1] hover:from-[#d237b1] hover:to-[#7200ff] text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 py-2 text-sm"
           >
             <a
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2"
+              className="flex items-center justify-center gap-1.5"
             >
-              <FiExternalLink size={16} />
+              <FiExternalLink size={14} />
               Live Demo
             </a>
           </Button>
@@ -234,7 +234,7 @@ const ProjectCards = () => {
             <Button
               asChild
               variant="outline"
-              className="font-semibold transition-all duration-300 hover:scale-105 py-3"
+              className="font-medium transition-all duration-300 hover:scale-105 py-2 text-sm"
               style={{ 
                 backgroundColor: getGitHubStyles().backgroundColor,
                 color: getGitHubStyles().color,
