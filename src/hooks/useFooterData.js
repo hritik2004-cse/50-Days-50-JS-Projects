@@ -20,7 +20,7 @@ export const useFooterData = (useDatabase = false) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+    const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8080').replace(/\/$/, '');
 
     useEffect(() => {
         const fetchFooterData = async () => {
@@ -83,7 +83,7 @@ export const useSocialLinks = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+    const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8080').replace(/\/$/, '');
 
     const fetchSocialLinks = useCallback(async (includeInactive = false) => {
         setLoading(true);
